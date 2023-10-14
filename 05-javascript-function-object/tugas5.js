@@ -151,3 +151,15 @@ const functionObject = (param) => {
 
 newMobil = functionObject(mobil);
 console.log(mobil);
+
+const functionObjectTes = (...param) => {
+  return param;
+};
+
+let a = functionObjectTes(1, 23, 4);
+console.log(a);
+
+console.log("------------------------------");
+const arr = [1, 2, 3, 4, 5];
+const [tes1, tes2, tes3] = arr;
+console.log(tes3);

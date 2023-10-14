@@ -41,10 +41,11 @@
 }
 
 .container {
+  width: 50%;
   margin-top: 100px;
   margin-bottom: 100px;
-  margin-right: 550px;
-  margin-left: 550px;
+  margin-right: 100px;
+  margin-left: 400px;
   padding: 30px;
   box-shadow: 2px 11px 5px -1px rgba(0,0,0,0.14);
   -webkit-box-shadow: 2px 11px 5px -1px rgba(0,0,0,0.14);
@@ -59,6 +60,6 @@ button{
   width: 100%;
 }
 
-.container p{
+.counter{
   text-align: center;
 }
