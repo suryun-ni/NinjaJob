@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Table } from "flowbite-react";
-import { Button } from "flowbite-react";
 import axios from "axios";
 
 export default function DefaultTable() {
@@ -20,6 +18,7 @@ export default function DefaultTable() {
   return (
     <div className="container">
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <p>Tugas 10</p>
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-white uppercase bg-purple-600 dark:text-white">
             <tr>
@@ -46,7 +45,7 @@ export default function DefaultTable() {
           </thead>
           <tbody>
             {data !== null &&
-              data.map((res, i, index) => {
+              data.map((res, i) => {
                 const handleIndex = (score) => {
                   if (score >= 80) {
                     return "A";
@@ -68,7 +67,10 @@ export default function DefaultTable() {
                 };
                 return (
                   <>
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <tr
+                      key={i}
+                      className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                    >
                       <th
                         scope="row"
                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
