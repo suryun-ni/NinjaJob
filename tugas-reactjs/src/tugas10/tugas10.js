@@ -45,7 +45,7 @@ export default function DefaultTable() {
           </thead>
           <tbody>
             {data !== null &&
-              data.map((res, i) => {
+              data.map((res, index) => {
                 const handleIndex = (score) => {
                   if (score >= 80) {
                     return "A";
@@ -68,14 +68,14 @@ export default function DefaultTable() {
                 return (
                   <>
                     <tr
-                      key={i}
+                      key={index}
                       className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                     >
                       <th
                         scope="row"
                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
-                        {i + 1}
+                        {index + 1}
                       </th>
                       <td className="px-6 py-4">{res.name}</td>
                       <td className="px-6 py-4">{res.course}</td>

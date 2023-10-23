@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Table } from "flowbite-react";
-import { Button } from "flowbite-react";
-import axios, { Axios } from "axios";
+import axios from "axios";
 
 export default function DefaultTable() {
   const [data, setData] = useState(null);
@@ -13,7 +11,7 @@ export default function DefaultTable() {
 
   // FecthData (lanjutan RealTime)
   useEffect(() => {
-    if (FecthStatus == true) {
+    if (FecthStatus === true) {
       axios
         .get("https://backendexample.sanbercloud.com/api/student-scores")
         .then((res) => {
@@ -43,10 +41,32 @@ export default function DefaultTable() {
     }
   };
 
+  //Handle Update
+
+  //State Indikator
+  const [currentId, setCurrentId] = useState(-1);
+  const handleUpdate = (event) => {
+    let idData = parseInt(event.target.value);
+    setCurrentId(idData);
+    console.log(idData);
+    axios
+      .get(
+        `https://backendexample.sanbercloud.com/api/student-scores/${idData}`
+      )
+      .then((res) => {
+        let data = res.data;
+        setInput({
+          name: data.name,
+          course: data.course,
+          score: data.score,
+        });
+      });
+  };
+
   // Handle Delete
   const handleDelete = (event) => {
     let idData = parseInt(event.target.value);
-    // console.log(idData);
+    console.log(idData);
     axios
       .delete(
         `https://backendexample.sanbercloud.com/api/student-scores/${idData}`
@@ -63,16 +83,48 @@ export default function DefaultTable() {
     let { name } = input;
     let { course } = input;
     let { score } = input;
-    axios
-      .post("https://backendexample.sanbercloud.com/api/student-scores", {
-        name,
-        course,
-        score,
-      })
-      .then((response) => {
-        console.log(response);
-        setFetchStatus(true); //lanjutan realTime Table
-      });
+    // axios
+    //   .post("https://backendexample.sanbercloud.com/api/student-scores", {
+    //     name,
+    //     course,
+    //     score,
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //     setFetchStatus(true); //lanjutan realTime Table
+    //   });
+
+    // Handle Update pada Submit
+    if (currentId === -1) {
+      //create data
+      axios
+        .post("https://backendexample.sanbercloud.com/api/student-scores", {
+          name,
+          course,
+          score,
+        })
+        .then((res) => {
+          console.log(res);
+          setFetchStatus(true);
+        });
+    } else {
+      //UPDATE DATA
+      axios
+        .put(
+          `https://backendexample.sanbercloud.com/api/student-scores/${currentId}`,
+          {
+            name,
+            course,
+            score,
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          setFetchStatus(true);
+        });
+    }
+    setCurrentId(-1);
+
     // Mengosongkan input setelah diisi
     setInput({
       name: "",
@@ -148,6 +200,7 @@ export default function DefaultTable() {
                       <td className="flex items-center px-6 py-4 space-x-3">
                         <button
                           value={res.id}
+                          onClick={handleUpdate}
                           className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                         >
                           Edit
