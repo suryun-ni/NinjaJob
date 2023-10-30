@@ -10,8 +10,8 @@ function App() {
     <>
       <Navbar />
       {/* <Slider /> */}
-      {/* <HeroSection />
-      <ContentCard /> */}
+      <HeroSection />
+      <ContentCard />
     </>
   );
 }
