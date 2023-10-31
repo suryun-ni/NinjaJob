@@ -1,33 +1,32 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-
 import { useNavigate } from "react-router-dom";
 import { BsFillBuildingFill } from "react-icons/bs";
 import { BiCurrentLocation } from "react-icons/bi";
-import Child from "./jobDetail";
+import ContentCard from "./ContentCard";
+import { Route, Link, Routes, useParams } from "react-router-dom";
 
-export default function SectionCard() {
+export default function JobDetail() {
   let navigate = useNavigate();
-  const [id, setId] = useState("");
   const routeChange = (event) => {
     let idData = parseInt(event.target.value);
-    setId(idData);
     let path = `/job-detail/${idData}`;
     navigate(path);
   };
+
   const [data, setData] = useState(null);
+  const params = useParams();
+  let idData = params.userId;
   useEffect(() => {
     axios
-      .get("https://dev-example.sanbercloud.com/api/job-vacancy")
+      .get(`https://dev-example.sanbercloud.com/api/job-vacancy/${idData}`)
       .then((res) => {
         setData([...res.data.data]);
         console.log(setData);
       })
       .catch((err) => {});
   }, []);
-
   return (
     <div>
       <div className="min-h-screen flex flex-col items-center mt-4">
@@ -103,7 +102,6 @@ export default function SectionCard() {
                   </>
                 );
               })}
-            <Child routeChange={id} />
           </div>
         </div>
       </div>

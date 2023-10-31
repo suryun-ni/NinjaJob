@@ -1,21 +1,21 @@
 "use client";
 
 import React, { Button, Navbar } from "flowbite-react";
-
+import { Link } from "react-router-dom";
 export default function navbar() {
   return (
     <nav className="bg-[#5C5470] dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border[#5C5470]  dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src="https://th.bing.com/th/id/R.3795b26a61382e4dc2d21750ed550ef3?rik=xiRa9E4sIO%2fhow&riu=http%3a%2f%2fpngimg.com%2fuploads%2fninja%2fninja_PNG22.png&ehk=eJh0KWQMff5gAKpoYrovb3oXJ8DMXJE2Z35PoyjRwSY%3d&risl=&pid=ImgRaw&r=0"
             className="h-8 mr-3"
             alt="Flowbite Logo"
           />
           <span className="pr-12 text-white self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             NinjaJob
           </span>
-        </a>
+        </Link>
 
         <div className="flex md:order-2">
           {/* SEARCH BUTTON */}
