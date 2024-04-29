@@ -54,12 +54,8 @@ export default function DefaultTable() {
         `https://backendexample.sanbercloud.com/api/student-scores/${idData}`
       )
       .then((res) => {
-        let data = res.data;
-        setInput({
-          name: data.name,
-          course: data.course,
-          score: data.score,
-        });
+        setData([...res.data.data]);
+        console.log(setData);
       });
   };
 

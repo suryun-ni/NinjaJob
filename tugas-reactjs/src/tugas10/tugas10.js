@@ -11,6 +11,7 @@ export default function DefaultTable() {
       .get("https://backendexample.sanbercloud.com/api/student-scores")
       .then((res) => {
         setData([...res.data]);
+        console.log(res);
       })
       .catch((err) => {});
   }, []);
