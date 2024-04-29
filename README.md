@@ -1,4 +1,4 @@
-# Sanbercode Reactjs Batch 50
+# React Frond End
 
 <h2>Selamat datang di respitori Tengku Surya</h2> 
 
@@ -10,3 +10,7 @@ bila terdapat kendala dalam tugas atau ada masalah dapat menghubungi via berikut
 <span>
 <a href ="https://wa.me/6289516227279"><img src = "https://cdn.pixabay.com/photo/2021/05/22/11/38/whatsapp-6273368_1280.png" alt = "WA Tengku Surya" width="100" height="100"></a>
 </span>
+
+berikut hasil dari project front end react ini 
+
+![webreactfrontNinjaJob](https://github.com/suryun-ni/NinjaJob/assets/82017653/ecbed854-ec87-48d7-abd9-6fe3f27ceaa1)
